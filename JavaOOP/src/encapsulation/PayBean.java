@@ -4,14 +4,20 @@ public class PayBean {
 	// 메소드는 선언부, 연산부, 출력부로 나누고
 	//Bean 클래스라면 멤버필드 + 멤버메소드
 	private String name;
-	private int salary,tax,money; // 멤버 필드 변수는 초기화 하지 않는다.
+	private int salary; // 멤버 필드 변수는 초기화 하지 않는다.
 	
 	// 멤버메소드 영역
 	public void setName(String name) {
 		this.name = name;
 	}
+	public String getName() {
+		return name;
+	}
 	public void setSalary(int salary) {
 		this.salary = salary;
+	}
+	public int getSalary() {
+		return salary;
 	}
 	
 	public int getTax() {
