@@ -40,21 +40,17 @@ public class CardBean {
 		// getter 에서 문제 해결 패턴
 		// 초기화 후 private 의 해당 변수 삭제.
 		String winner = "";
-		if (this.num1 > this.num2) {
+/*		if (this.num1 > this.num2) {
 			winner = name+" 승리";
 		} else if(this.num1 < this.num2) {
 			winner = name2+" 승리";
 		} else {
 			winner = "비김";
-		}
+		}*/
 		return winner;
 	}
 
 	
-	@Override
-	public String toString() {
-		// TODO Auto-generated method stub
-		return "["+name+" : "+num1+"] vs ["+name2+" : "+num2+"]\n"+this.getWinner();
-	}
+	
 	
 }

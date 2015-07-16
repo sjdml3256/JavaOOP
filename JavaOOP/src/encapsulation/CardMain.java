@@ -14,22 +14,20 @@ public class CardMain {
 		 * */
 		
 		// 집에 있는 유저가 자기 모니터에 입력
-		String name= "",name2="",winner="";
-		int num1= 0, num2 = 0;
 		Scanner scanner = new Scanner(System.in);
 		
 		System.out.println("플레이어 이름");
-		name = scanner.next();
+		CardBean hong = new CardBean(scanner.next());
 		System.out.println("플레이어 이름");
-		name2 = scanner.next();		
+		CardBean kim = new CardBean(scanner.next());
 		
 		// 인터넷 망을 타고 데이터 값이 게임회사로 들어옴
-		CardBean hong = new CardBean(name);
-		CardBean kim = new CardBean(name2);
+		
+		
 		
 		CardGame game = new CardGame(hong,kim);
 		
 		// 사용자가 결과 화면을 보는중
-		System.out.println(game.getWinner());
+		System.out.println(game.toString());
 	} 
 }
