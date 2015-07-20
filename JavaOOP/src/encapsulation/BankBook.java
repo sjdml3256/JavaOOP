@@ -40,7 +40,7 @@ public class BankBook implements Account{
 	
 	/*===== Member Field =====*/
 	//private static final String bank = "아이티뱅크";
-	private static String BANK;	// 은행명은 바뀌면 안됨.
+	public static String BANK;	// 은행명은 바뀌면 안됨.
 	private int bankbookNo;		// 통장번호는 바뀌면 안됨.
 	private String name;		// 외부에서 입력받고 바뀌면 안됨.
 	private int money;			// 상황에 따라 바뀜.
