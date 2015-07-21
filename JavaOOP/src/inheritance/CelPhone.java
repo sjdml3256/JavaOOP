@@ -1,4 +1,4 @@
-package inhebitance;
+package inheritance;
 /*
  * 객체 지향 프로그래밍 4대 특징 (2)상속
  * extends 라는 키워드로 부모(Phone) 역할을 하는 클래스를 선언하면

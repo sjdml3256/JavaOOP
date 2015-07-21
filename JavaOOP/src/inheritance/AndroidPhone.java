@@ -1,4 +1,4 @@
-package inhebitance;
+package inheritance;
 /*
  * 객체지향 언어 (2) 상속의 문법
  * - 부모에게 선언된 필드, 메소드를 그대로 사용하기 위해서는

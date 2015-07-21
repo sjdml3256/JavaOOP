@@ -1,4 +1,4 @@
-package inhebitance;
+package inheritance;
 
 public class Iphone extends CelPhone{
 	/*필드*/
