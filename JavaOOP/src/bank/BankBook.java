@@ -1,6 +1,6 @@
 package bank;
 
-public class BankBook implements Account{
+public class BankBook {
 	
 	public static String BANK;	// 은행명은 바뀌면 안됨.
 	private int bankbookNo;		// 통장번호는 바뀌면 안됨.
@@ -17,8 +17,8 @@ public class BankBook implements Account{
 	}
 
 	/*===== Member Method =====*/
-	@Override
-	public String toString() {
+	
+	public String showAccount() {
 		
 		return "==============\n"
 				+ " ["+BANK+"]\n"
@@ -28,27 +28,12 @@ public class BankBook implements Account{
 				+ " ==============";
 	}
 
-	public int getBankbookNo() {
-		return bankbookNo;
-	}
-	
-	public String getName() {
-		return name;
-	}
-
-	public int getMoney() {
-		return money;
-	}
 	
 	public void setPass(int pass) {
 		this.pass = pass;
 	}
 	
-	public int getPass() {
-		return pass;
-	}
-
-	@Override
+	
 	public void withDraw(int money) {
 		// TODO Auto-generated method stub
 		// 파라미터 값이 정상값이 아닌 상태를 추적해서
@@ -62,7 +47,7 @@ public class BankBook implements Account{
 			this.money -= money; // 누적된 값에서 마이너스
 		}
 	}
-	@Override
+	
 	public void deposit(int money) {
 		// TODO Auto-generated method stub
 		if (money<=0) {
@@ -70,6 +55,14 @@ public class BankBook implements Account{
 		} else {
 			this.money += money; // 누적된 값에서 마이너스
 		}
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public int getBankbookNo() {
+		return bankbookNo;
 	}
 
 	
