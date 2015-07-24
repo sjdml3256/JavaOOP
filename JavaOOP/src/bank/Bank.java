@@ -77,14 +77,20 @@ public class Bank implements BankRole{
 	// 계좌 검색(이름) -> 리턴결과 : 계좌 1개 이상
 	@Override
 	public BankBook[] searchAccountByName(String ownerName) {
-		BankBook[] accounts = null;
+		
 		// seachAccountByName() 이 메서드를 호출하면
 		// 자동으로 searchCountByName()을 먼저 호출 하라 라는 의미.
 		int tempcount = this.searchCountByName(ownerName);
 		if (tempcount == 0) { // 조회하는 사람의 통장이 하나도 없다면
 			return null;
 		}
-		for (int i = 0; i < this.count; i++) {
+		// 위처럼 필터링을 하는 이유는 본 알고리즘을 하기 전에
+		// 필요없는 상태라면 알고리즘을 호출하지 않기위해서다.
+		// 그렇지 않으면 자원(리소스 : 메모리, DB)의 낭비를 초래한다.
+		BankBook[] accounts = new BankBook[tempcount];
+		tempcount = 0;  // 0 으로 초기화 시켜서 배열의 인덱스로
+						// 사용해야함
+		for (int i = 0; i < accounts.length; i++) {
 			if (bankBookList[i].getName().equals(ownerName)) {
 				accounts[tempcount] = bankBookList[i];
 				tempcount++;
@@ -111,15 +117,23 @@ public class Bank implements BankRole{
 
 	// 계좌 폐지 -> 리턴결과 : true or false
 	@Override
-	public boolean closeAccount(String AccountNo) {
+	public boolean closeAccount(String accountNo) {
 		// flag는 삭제가 성공적으로 이뤄지면 true 를 리턴하고
 		// 삭제 할것이 없으면 false 를 리턴한다.
-		boolean flag = false;
+		boolean closeOk = false;
 		// String(문자열) 로 들어온 값을 숫자로 바꿔서 비교
-		int searchAccountNo = Integer.parseInt(AccountNo);
+		BankBook bankBook = this.searchAccountByAccountNo(accountNo);
+		
+		// 필터링에서는 if-else 구문을 사용하지 않고 if 문을 사용한다.
+		if (bankBook == null) {
+			System.out.println("해당 계좌가 존재하지 않습니다.");
+			return closeOk;
+		}
+		int searchAccountNo = Integer.parseInt(accountNo);
 		for (int i = 0; i < this.count; i++) {
 			if (bankBookList[i].getBankbookNo() == searchAccountNo) {
-				flag = true;
+				
+			
 			/*
 			 * j = i 바꾼 이유는
 			 * 홍길동의 계좌가 은행 전체 계좌의 50번째 라면
@@ -135,13 +149,11 @@ public class Bank implements BankRole{
 					bankBookList[i] = bankBookList[j+1];
 				}
 				count--;
+				
+				// 위 알고리즘을 거친 후에야 계좌 삭제가 일어났다고 본다.
+				closeOk = true;
 			}
 		}
-		if (flag) {
-			
-		} else {
-
-		}
-		return flag;
+		return closeOk;
 	}
 }
